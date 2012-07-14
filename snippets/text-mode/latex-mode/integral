@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: integrale
+# key: int
+# binding: "keybinding"
+# --
+\int_{$1}^{$2} $0

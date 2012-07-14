@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: dquad
+# key: dq
+# binding: "keybinding"
+# --
+\dquad $0

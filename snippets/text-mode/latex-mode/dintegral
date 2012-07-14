@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: dintegral
+# key: dint
+# binding: "keybinding"
+# --
+\dint_{$1}^{$2} $0
