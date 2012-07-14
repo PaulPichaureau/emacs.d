@@ -9,8 +9,6 @@
 (setq user-mail-address "paul.pichaureau@alcandre.net")
 
 
-
-;; -------------------------------------------------------------------
 ;; -------------------------------------------------------------------
 ;; Gestion des chemins
 
@@ -82,8 +80,6 @@ Attention `user-init-dir' se termine par un /"
 
 (setq scroll-margin 1                    ; do smooth scrolling, ...
        scroll-conservatively 101)        
-;;       scroll-up-aggressively 0.1    
-;;       scroll-down-aggressively 0.1) 
 
 
 ;; ;; -------------------------------------------------------------------
