@@ -781,6 +781,20 @@ argument devant"
 (global-set-key [C-f1] 'bookmark-set)
 (global-set-key [S-f1] 'kpse-open)
 
+;; Ouvre un fichier trouvé grâce à kpsewhich
+(defun kpse-open (file)
+  "Find a command in the tex arborescence and open it"
+  (interactive "sFilename: ")
+  (let ((result (shell-command-to-string (format "kpsewhich %s " file)))) 
+    (if (string-match "\\([^\n]*\\)" result)
+        (progn
+          (find-file (match-string 1 result))
+          )
+      )
+    )
+  )
+
+
 ;; Les commentaires : f2
 (global-set-key [f2] 'comment-dwim)
 (global-set-key [C-f2] 'uncomment-region)
@@ -1023,6 +1037,7 @@ User buffers are those whose name does not start with *."
  '(ecb-layout-window-sizes (quote (("Alcandre4" (ecb-methods-buffer-name 0.2 . 0.49230769230769234) (ecb-history-buffer-name 0.2 . 0.49230769230769234) (ecb-directories-buffer-name 0.21379310344827587 . 0.49230769230769234) (ecb-sources-buffer-name 0.21379310344827587 . 0.49230769230769234)))))
  '(ecb-minor-mode-text "")
  '(ecb-options-version "2.40")
+ '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
  '(ecb-source-file-regexps (quote ((".*" ("\\(^\\(\\.\\|#\\)\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\|log\\|toc\\|aux\\|out\\|table\\|synctex\\|bbl\\|blg\\|ilg\\|ind\\|idx\\|gnuplot\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
  '(ecb-tip-of-the-day nil)
  '(ecb-windows-width 0.2)
@@ -1075,6 +1090,8 @@ User buffers are those whose name does not start with *."
  '(show-paren-style (quote mixed))
  '(size-indication-mode t)
  '(solar-n-hemi-seasons (quote ("Equinoxe de printemps" "Solstice d'été" "Équinoxe d'Automne" "Solstice d'hiver")))
+ '(tabbar-mode t nil (tabbar))
+ '(tabbar-mwheel-mode t nil (tabbar))
  '(tags-case-fold-search t)
  '(template-default-directories (quote ("P:/Paul/.emacs.d/templates/")))
  '(tex-close-quote " \\fg")
@@ -1101,6 +1118,8 @@ User buffers are those whose name does not start with *."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#fdf6e3" :foreground "SystemWindowText" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :family "Consolas"))))
+ '(tabbar-default ((t (:inherit variable-pitch :background "gray50" :foreground "gray75" :box nil :height 0.9))))
+ '(tabbar-selected ((t (:inherit tabbar-default :background "black" :foreground "#fdf6e3" :box (:line-width 1 :color "white" :style pressed-button)))))
  '(variable-pitch ((t (:family "Segoe UI")))))
 
 
