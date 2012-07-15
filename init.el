@@ -936,8 +936,40 @@ User buffers are those whose name does not start with *."
 ;; Load the snippets
 (yas/load-directory yas/root-directory)
 
-(setq yas/prompt-functions '(yas/completing-prompt
-                             yas/ido-prompt))
+(setq yas/prompt-functions '( yas/ido-prompt
+                              yas/completing-prompt))
+
+(require 'popup)
+;; add some shotcuts in popup menu mode
+(define-key popup-menu-keymap (kbd "M-n") 'popup-next)
+(define-key popup-menu-keymap (kbd "TAB") 'popup-next)
+(define-key popup-menu-keymap (kbd "<tab>") 'popup-next)
+(define-key popup-menu-keymap (kbd "<backtab>") 'popup-previous)
+(define-key popup-menu-keymap (kbd "M-p") 'popup-previous)
+
+(defun yas/popup-isearch-prompt (prompt choices &optional display-fn)
+  (when (featurep 'popup)
+    (popup-menu*
+     (mapcar
+      (lambda (choice)
+        (popup-make-item
+         (or (and display-fn (funcall display-fn choice))
+             choice)
+         :value choice))
+      choices)
+     :prompt prompt
+     ;; start isearch mode immediately
+     :isearch t
+     )))
+
+;; (setq yas/prompt-functions '(yas/popup-isearch-prompt yas/no-prompt))
+
+;; -------------------------------------------------------------------
+;; utilisation d'org-mode
+
+(setq org-agenda-files (list "~/journal.org"))
+(setq initial-buffer-choice "~/journal.org")
+
 
 ;; -------------------------------------------------------------------
 ;; Customization
@@ -972,6 +1004,12 @@ User buffers are those whose name does not start with *."
  '(archive-zip-update-case (quote ("zip" "-u" "-P")))
  '(background-color "#fdf6e3")
  '(background-mode light)
+ '(calendar-date-style (quote european))
+ '(calendar-day-name-array ["Dimanche" "Lundi" "Mardi" "Mercredi" "Jeudi" "Vendredi" "Samedi"])
+ '(calendar-european-date-display-form (quote ((if dayname (concat dayname "  ")) day " " monthname " " year)))
+ '(calendar-month-abbrev-array ["Jan" "Fév" "Mar" "Avr" "Mai" "Jui" "Jul" "Aou" "Sep" "Oct" "Nov" "Dec"])
+ '(calendar-month-name-array ["Janvier" "Février" "Mars" "Avril" "Mai" "Juin" "Juillet" "Août" "Septembre" "Octobre" "Novembre" "Decembre"])
+ '(calendar-week-start-day 1)
  '(case-fold-search t)
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
@@ -988,6 +1026,7 @@ User buffers are those whose name does not start with *."
  '(ecb-source-file-regexps (quote ((".*" ("\\(^\\(\\.\\|#\\)\\|\\(~$\\|\\.\\(elc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\|log\\|toc\\|aux\\|out\\|table\\|synctex\\|bbl\\|blg\\|ilg\\|ind\\|idx\\|gnuplot\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
  '(ecb-tip-of-the-day nil)
  '(ecb-windows-width 0.2)
+ '(european-calendar-style t)
  '(fci-rule-color "#383838")
  '(file-cache-find-command-posix-flag t)
  '(font-latex-fontify-script t)
@@ -1010,8 +1049,13 @@ User buffers are those whose name does not start with *."
  '(iswitchb-mode t)
  '(italic ((t (:slant italic))))
  '(line-number-mode nil)
+ '(lunar-phase-names (quote ("Nouvelle lune" "Premier quartie" "Pleine lune" "Dernier quartier")))
  '(mouse-drag-copy-region t)
  '(mouse-yank-at-point t)
+ '(org-hierarchical-checkbox-statistics nil)
+ '(org-hierarchical-todo-statistics nil)
+ '(org-log-done (quote time))
+ '(org-startup-folded nil)
  '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("marmalade" . "http://marmalade-repo.org/packages/"))))
  '(pdf-view-command "gsview32.exe")
  '(php-manual-url "http://www.php.net/manual/fr/manual.php")
@@ -1030,6 +1074,7 @@ User buffers are those whose name does not start with *."
  '(show-paren-ring-bell-on-mismatch t)
  '(show-paren-style (quote mixed))
  '(size-indication-mode t)
+ '(solar-n-hemi-seasons (quote ("Equinoxe de printemps" "Solstice d'été" "Équinoxe d'Automne" "Solstice d'hiver")))
  '(tags-case-fold-search t)
  '(template-default-directories (quote ("P:/Paul/.emacs.d/templates/")))
  '(tex-close-quote " \\fg")

@@ -1,6 +1,5 @@
 # -*- mode: snippet -*-
 # name: Int
 # key: Int
-# binding: "keybinding"
 # --
 \Int${1:ff}{$2,$3}$0

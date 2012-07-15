@@ -1,6 +1,5 @@
 # -*- mode: snippet -*-
 # name: dsum
 # key: dsum
-# binding: "keybinding"
 # --
 \dsum_{$1}^{$2} $0

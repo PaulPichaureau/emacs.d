@@ -1,6 +1,5 @@
 # -*- mode: snippet -*-
 # name: subsubQuestion
 # key: ssqu
-# binding: "keybinding"
 # --
 \subsubQuestion $0

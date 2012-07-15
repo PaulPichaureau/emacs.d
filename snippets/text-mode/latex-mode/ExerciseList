@@ -1,7 +1,6 @@
 # -*- mode: snippet -*-
 # name: {ExerciseList}
 # key: exel
-# binding: "keybinding"
 # --
 \begin{ExerciseList}
     % -------------------------------------------------------------------

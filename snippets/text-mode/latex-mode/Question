@@ -1,6 +1,5 @@
 # -*- mode: snippet -*-
 # name: Question
 # key: qu
-# binding: "keybinding"
 # --
 \Question $0

@@ -1,6 +1,5 @@
 # -*- mode: snippet -*-
 # name: sum
 # key: sum
-# binding: "keybinding"
 # --
 \sum_{$1}^{$2} $0
