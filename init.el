@@ -1448,8 +1448,8 @@ redelim1"
 ;; navigation aisée
 (add-hook 'outline-minor-mode-hook
           (lambda ()
-            (require 'outline-magic)
-            (define-key outline-minor-mode-map [(f12)] 'outline-cycle)))
+            (require 'outline-magic)))
+
 (outline-minor-mode t)
 (global-set-key [M-next]  'outline-next-visible-heading)
 (global-set-key [M-prior]  'outline-previous-visible-heading)
@@ -1550,7 +1550,7 @@ redelim1"
  '(font-latex-title-fontity (quote color))
  '(font-latex-verb-like-commands (quote ("verb" "verb*")))
  '(foreground-color "#93a1a1")
- '(fringe-mode 0 nil (fringe))
+ '(fringe-mode (quote (nil . 0)) nil (fringe))
  '(global-font-lock-mode t nil (font-lock))
  '(global-linum-mode t)
  '(grep-command nil)
@@ -1564,7 +1564,6 @@ redelim1"
  '(italic ((t (:slant italic))))
  '(line-number-mode nil)
  '(line-spacing 0)
- '(linum-format "%7d")
  '(lunar-phase-names (quote ("Nouvelle lune" "Premier quartier" "Pleine lune" "Dernier quartier")))
  '(main-line-color1 "#1e1e1e")
  '(main-line-color2 "#111111")
@@ -1664,3 +1663,12 @@ redelim1"
 (set-frame-size-according-to-resolution)
 
  ;; '(preview-gs-command "P:\\Programmes\\gs\\gs8.64\\bin\\GSWIN32C.EXE")
+
+(setq linum-format
+      (lambda (line)
+    (propertize
+     (format
+      (let
+      ((w (length (number-to-string (count-lines (point-min)
+                             (point-max))))))
+    (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
