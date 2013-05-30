@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Int
+# key: int
+# --
+\Int${1:ff}{$2,$3}$0

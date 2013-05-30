@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: \suite(*){...}
+# key: su
+# --
+\suite$1{$2}

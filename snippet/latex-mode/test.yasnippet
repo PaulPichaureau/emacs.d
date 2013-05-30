@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Test
+# key: tst
+# type: command
+# --
+(skip-syntax-backward " ") 
+(yas/expand-snippet "\\footnote{${1:the footnote test}}") 
+(conditionnal-string yas/text "d" "oui" "non")

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: {theoreme[title, label, index]}
+# key: thm
+# --
+\begin{theoreme}[${1:$(if (yas/text) "title={" "")}${1:}${1:$(if (yas/text)  "}," "")}${2:$(if (yas/text)  "label={" "")}${2:}${2:$(if (yas/text) "}," "")}${3:$(if (yas/text) "index={" "")}${3:}${3:$(if (yas/text) "}," "")}]
+$0
+\demonstration (admis)
+\end{theoreme}

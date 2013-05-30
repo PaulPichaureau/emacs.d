@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: \Intee{}{}
+# key: intee
+# --
+\Intee{${1:1},${2:n}}$0

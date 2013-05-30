@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: \deff{...}{...}{...}
+# key: deff
+# --
+\deff{$1}{$2}{$3}

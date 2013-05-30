@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Label
+# key: lbl
+# --
+\label{`(file-name-sans-extension (file-name-nondirectory buffer-file-name))`:$1}

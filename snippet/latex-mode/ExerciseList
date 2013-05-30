@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: {ExerciseList}
+# key: exel
+# --
+\begin{ExerciseList}
+    % -------------------------------------------------------------------
+    \Exercise $0
+\end{ExerciseList}
