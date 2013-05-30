@@ -1,6 +1,9 @@
 ;; ----------------------------------------------------------------
-;; init.el de Paul Pichaureau
+;; init.el  Paul Pichaureau <paul.pichaureau@alcandre.net>
+;; Paul Pichaureau (paul.pichaureau@alcandre.net)
+;; Time-stamp: <2013-05-30 10:57:43 Paul>
 ;; ----------------------------------------------------------------
+
 
 ;; fait de suite pour un plus joli démarrage
 
@@ -177,6 +180,10 @@ fonction pour définir un répertoire/fichier relatif.  Attention
 ;; -------------------------------------------------------------------
 ;; Réglages divers
 ;; -------------------------------------------------------------------
+
+;; Timestamp management
+(add-hook 'before-save-hook 'time-stamp)
+(setq time-stamp-pattern nil)
 
 ;; Activer la mise en exergue des espaces superflus ou hétérogènes
 ;; (require 'whitespace)
@@ -1230,28 +1237,29 @@ line instead."
   (interactive)
   (insert (format-time-string "%e %B %Y")))
 
-;; La même en format très court
-(defun insert-very-short-date ()
-  "Insère la date abrégée"
-  (interactive)
-  (insert (format-time-string "%Y/%m/%d")))
-
 ;; La même en format très court pour les fichiers
 (defun insert-very-short-date-file ()
   "Insère la date abrégée"
   (interactive)
   (insert (format-time-string "%Y-%m-%d")))
 
-(defun pp-sign ()
-  "spit out my name, email and the current time"
+;; Insert Time-Stamp
+(defun insert-time-stamp ()
+  "Insert name and time stamp"
   (interactive)
-  (insert "Paul Pichaureau (paul.pichaureau@alcandre.net)")
-  (insert-very-short-date))
+  (insert  comment-start comment-start
+           " "user-full-name " (" user-mail-address ")\n")
+  (insert  comment-start comment-start
+           " Time-stamp: <>\n")
+  (time-stamp)
+  )
 
 (global-set-key [f7]   'insert-buffer-file-name-nond-sansext)
 (global-set-key [S-f7] 'insert-date)
-(global-set-key [C-f7] 'insert-very-short-date)
+(global-set-key [C-f7] 'insert-time-stamp)
 (global-set-key [M-f7] 'insert-very-short-date-file)
+
+
 
 ;; utilisation de occur
 
