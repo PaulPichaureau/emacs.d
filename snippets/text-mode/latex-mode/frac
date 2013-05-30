@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: \{d}frac{...}{...}
-# key: fr
-# --
-\\$1frac{$2}{$3}

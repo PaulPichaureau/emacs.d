@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: integrale
-# key: int
-# --
-\${1:d}int_{$2}^{$3} $0
