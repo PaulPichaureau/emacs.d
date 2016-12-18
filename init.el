@@ -21,6 +21,8 @@
 ;; Démarrage du serveur emacs
 (server-start)
 
+;; test
+
 ;; Qui suis-je ?
 (setq user-full-name "Paul Pichaureau")
 (setq user-mail-address "paul.pichaureau@alcandre.net")
